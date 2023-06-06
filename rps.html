@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="rps.css">
+    
+</head>
+<body >
+    <div class="maincontainer" id="maincontainer">
+        <div class="scorecontainer" id="scorecontainer" style=" display: flex;" >
+            <h2>ROCK<br/>PAPER<br/>SCISSORS</h2>
+            <div style="display: flex; margin-left: 270px;" >
+                <p class="scoreboard">COMPUTER SCORE <br/><span id="computerscore" style="font-size: 35px; font-weight: bold; color: black; padding-bottom: 3px;">0</span></p>
+                <p class="scoreboard" >YOUR <br/>SCORE<br/> <span  id="playerscore" style="font-size: 35px; font-weight: bold; color: black; padding-bottom: 3px">0</span></p>
+            </div>
+        </div> 
+            <div>
+        <div style="display: flex;" >
+        <div  id="rpscontainer">
+        <div style="display: flex;">
+            <div>
+                <button class="circlecontainer" id="rock" onclick="getResult('rock')">
+                    <img src="./assests/rock.png"/>
+                </button>
+                
+          </div>
+            <div class="line1" id="line1"></div>
+            <div>
+                <button class="circlecontainer2" id="scissor"  onclick="getResult('scissor')">
+                    <img src="./assests/scissor.png"/>
+                </button>
+                
+          </div>
+        </div>  
+        <div class="line2" id="line2"></div> 
+        <div class="line3" id="line3"></div>
+        <button class="circlecontainer3" id="paper" onclick="getResult('paper')" >
+            <img src="./assests/hand.png"/>
+        </button> 
+        </div>        
+        <div>
+            <div class="rulescontainer" id="rulescontainer">
+                <div>
+                <button class="close-btn" onclick="closeRules()">X</button>
+                <h1 class="rulesheading">Game Rules</h1>
+                <ul class="gamerules">
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">Rock beats scissors, scissors beat paper,and paper beats rock</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">Agree ahead of time whether you'll <br/>count off "rock,paper,scissors,<br/>shoot" or just "rock,paper,scissors."</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;;">Use rock, paper,scissors to settle<br/> minor decisions ro simply play to<br/> pass the time</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">If both players lay down the same<br/> hand, each player lays down another<br/> hand</span></li>
+                
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div style="display: flex;">
+                <button class="rulesbutton" id="rules"   onclick="rulesbutton()">RULES</button>
+                <button class="nextbutton" id="nextbutton" onclick="next()">NEXT</button>
+         </div>
+         </div>
+        </div >
+        <div id="scissorwinningcontainer" style="display: none; ; ">
+             
+            <div style="display: flex;">
+                <div  >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="scissorContainer" >
+                        <img src="./assests/scissor.png"/>
+                    </div>
+                </div>
+                <div class="playagaincontainer">
+                    <h1 style="color: #FFFFFF;">YOU WIN</h1>
+                    <h2 class="againstpc">AGAINST PC</h2>
+                    <button class="playagainbutton" onclick="playAgain()" ></a>PLAY AGAIN</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="papercontainer" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="rockwinning" style="display: none;">
+        <div style="display: flex;">
+            <div >
+                <p class="youpicked">YOU PICKED</p>
+                <div class="rockContainer" >
+                    <img src="./assests/rock.png"/>
+                </div>
+            </div>
+            <div class="playagaincontainer">
+                <h1 style="color: #FFFFFF;">YOU WIN</h1>
+                <h2 class="againstpc">AGAINST PC</h2>
+                <button class="playagainbutton" onclick="playAgain()">PLAY AGAIN</button>
+            </div>
+            <div >
+                <p class="pcpicked">PC PICKED</p>
+                <div class="ScissorContainer" >
+                    <img src="./assests/scissor.png"/>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="paperwinning" style="display: none;">
+            <div style="display: flex;">
+                <div >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="PaperContainer" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+                <div class="playagaincontainer">
+                    <h1 style="color: #FFFFFF;">YOU WIN</h1>
+                    <h2 class="againstpc">AGAINST PC</h2>
+                    <button class="playagainbutton" onclick="playAgain()">PLAY AGAIN</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="RockpcContainer" >
+                        <img src="./assests/rock.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="RockTie" style="display: none;">
+                <div style="display: flex;">
+                    <div >
+                        <p class="youpicked">YOU PICKED</p>
+                        <div class="rocktieContainer" >
+                            <img src="./assests/rock.png"/>
+                        </div>
+                    </div>
+                    <div class="replayContainer">
+                        <h1 style="color: #FFFFFF; padding-bottom: 25px; padding-left: 20px;" >TIE UP</h1>
+                        
+                        <button class="replayButton" style="margin-top: 10px;"onclick="playAgain()">REPLAY</button>
+                    </div>
+                    <div >
+                        <p class="pcpicked">PC PICKED</p>
+                        <div class="RockpcContainer" >
+                            <img src="./assests/rock.png"/>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id="PaperTie" style="display: none;">
+            <div style="display: flex;">
+                <div >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="PapertieContainer" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+                <div class="replayContainer">
+                    <h1 style="color: #FFFFFF; padding-bottom: 25px; padding-left: 20px;" >TIE UP</h1>
+                    
+                    <button class="replayButton" style="margin-top: 10px;"onclick="playAgain()">REPLAY</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="papercontainer" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ScissorTie" style="display: none;">
+                <div style="display: flex;">
+                    <div >
+                        <p class="youpicked">YOU PICKED</p>
+                        <div class="ScissortieContainer" >
+                            <img src="./assests/scissor.png"/>
+                        </div>
+                    </div>
+                    <div class="replayContainer">
+                        <h1 style="color: #FFFFFF; padding-bottom: 25px; padding-left: 20px;" >TIE UP</h1>
+                        
+                        <button class="replayButton" style="margin-top: 10px;"onclick="playAgain()">REPLAY</button>
+                    </div>
+                    <div >
+                        <p class="pcpicked">PC PICKED</p>
+                        <div class="ScissorContainer" >
+                            <img src="./assests/scissor.png"/>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id="paperLoss" style="display: none;" >
+            <div style="display: flex;">
+                <div >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="PaperLossContainer" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+                <div class="playagaincontainer">
+                    <h1 style="color: #FFFFFF;">YOU LOST</h1>
+                    <h2 class="againstpc">AGAINST PC</h2>
+                    <button class="playagainbutton" onclick="playAgain()">PLAY AGAIN</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="ScissorLosscontainer" >
+                        <img src="./assests/scissor.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="scissorLoss" style="display: none;" >
+            <div style="display: flex;">
+                <div >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="ScissorLosscontainer2" >
+                        <img src="./assests/scissor.png"/>
+                    </div>
+                </div>
+                <div class="playagaincontainer">
+                    <h1 style="color: #FFFFFF;">YOU LOST</h1>
+                    <h2 class="againstpc">AGAINST PC</h2>
+                    <button class="playagainbutton" onclick="playAgain()">PLAY AGAIN</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="Rocklosscontainer" >
+                        <img src="./assests/rock.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="rockLoss" style="display: none;" >
+            <div style="display: flex;">
+                <div >
+                    <p class="youpicked">YOU PICKED</p>
+                    <div class="Rocklosscontainer2" >
+                        <img src="./assests/rock.png"/>
+                    </div>
+                </div>
+                <div class="playagaincontainer">
+                    <h1 style="color: #FFFFFF;">YOU LOST</h1>
+                    <h2 class="againstpc">AGAINST PC</h2>
+                    <button class="playagainbutton" onclick="playAgain()">PLAY AGAIN</button>
+                </div>
+                <div >
+                    <p class="pcpicked">PC PICKED</p>
+                    <div class="paperlosscontainer2" >
+                        <img src="./assests/hand.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="congratsContainer" style="display: none;" id="congratsContainer">
+            <img src="./assests/star3.png" class="star3"/>
+            <img src="./assests/star4.png" class="star4"/>
+            <img src="./assests/star2.png" class="star2"/>
+            <img src="./assests/star7.png" class="star7"/>
+            <img src="./assests/star9.png" class="star9"/>
+            <img src="./assests/star1.png" class="star1"/>
+            <img src="./assests/star6.png" class="star6"/>
+            <img src="./assests/cup.png" class="cup"/>
+            <img src="./assests/star5.png" class="star5"/>
+            <h1 class="hurray">HURRAY!!</h1>
+            <p class="wonthegame">YOU WON THE GAME</p>
+            <button class="againplay" onclick="playAgain()">PLAY AGAIN</button>
+            
+            <div class="rulescontainercong" id="rulescontainercon" >
+                <div > 
+                <button class="close-btn"  onclick="closeRulescon()">X</button>
+                <h1 class="rulesheading"  >Game Rules</h1>
+                <ul class="gamerules">
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">Rock beats scissors, scissors beat paper,and paper beats rock</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">Agree ahead of time whether you'll <br/>count off "rock,paper,scissors,<br/>shoot" or just "rock,paper,scissors."</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;;">Use rock, paper,scissors to settle<br/> minor decisions ro simply play to<br/> pass the time</span></li>
+                    <li style="margin-top: 0px;"><span style="color: #FFFFFF;">If both players lay down the same<br/> hand, each player lays down another<br/> hand</span></li>
+                
+                </ul>
+            </div>
+            </div>
+            <button class="rulesbuttoncong" onclick="rulesbuttoncon()" >RULES</button>
+           </div>
+    </div>
+    
+    
+    
+    <script src="rps.js"></script>
+    
+</body>
+</html>

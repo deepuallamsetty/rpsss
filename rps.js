@@ -12,7 +12,7 @@ function rulesbutton(){
   rulescontainer.style.display="flex"
 
 }
-function closeRules(){
+function closeRules()
   const rulescontainer=document.getElementById("rulescontainer")
   rulescontainer.style.display="none"
 }
@@ -39,6 +39,7 @@ function next(){
 
 function playAgain(){
  rpscontainer.style.display="block"
+  rulescontainer.style.marginLeft="260px"
  rules.style.marginTop="0px"
  rules.style.marginLeft="1400px"
  scissorwinningcontainer.style.display="none"
